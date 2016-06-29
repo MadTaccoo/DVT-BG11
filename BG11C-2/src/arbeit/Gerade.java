@@ -58,8 +58,22 @@ public class Gerade {
             return "Nullstelle";
         }
     }
+    
+    public Punkt berechneSchnittpunkt(Gerade g2) {
+    	if(isParallel(g2)) {
+    		return null;
+    	}
+    	
+    	double dm = toDouble(steigung) - toDouble(g2.steigung);
+    	double db = toDouble(getYAchsenabschnitt()) - toDouble(g2.getYAchsenabschnitt());
+    	Gerade dg = new Gerade("DG", Double.toString(dm), new Punkt(0, db));
+    	
+    	Punkt p = new Punkt(0, 0);
+    	dg.getNullstelle(p);
+    	return p;
+    }
 
-    public boolean isParallel(Gerade a) { steigung.equals(a.getSteigung()); }
+    public boolean isParallel(Gerade a) { return steigung.equals(a.getSteigung()); }
 
     public boolean isOrthogonal(Gerade a) {
         return toDouble(steigung) * toDouble(a.getSteigung()) == -1.0;

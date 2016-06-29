@@ -26,4 +26,8 @@ public class Punkt {
     public void setY(double y) {
         this.y = y;
     }
+    
+    public String toString() {
+    	return String.format("(%f|%f)", x, y);
+    }
 }
